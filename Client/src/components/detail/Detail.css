@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.733);
+    width: 100%;
+    padding-bottom: 10%;
+}
+.content {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left {
+    margin-top: 30px;
+    width:fit-content;
+    height: fit-content;
+    display:flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content:first baseline;
+    border-radius: 80px 0px;
+    border: #000000 solid 2px;
+    background-color: #5400853f;
+    padding: 20px;
+}
+
+.right {
+    margin: 30px;
+    margin-left: 100px;
+    min-width: 30%;
+    padding: 20px;
+}
+
+.detailTitle {
+    text-align: center;
+    font-size: 80px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(255, 255, 255);
+    background-color: rgba(134, 0, 167, 0.144);
+    font-weight: 100;
+    border-radius: 80px 0px;
+    text-shadow: 3px 3px 2px rgb(230, 0, 238);
+    border: 2px solid rgba(0, 0, 0, 0.466);
+}
+.description{
+    justify-content: first baseline;
+    font-weight: 100;
+    text-align:start;
+    padding-left: 1%;
+    background-color: rgba(170, 0, 0, 0);
+    font-size: 2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.imagen{
+    width: 110%;
+    height: 90%;
+    border: 2px solid rgb(14, 12, 13);
+    box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+    border-radius: 100%;
+    border: 5px solid black;
+}
+
+body {
+    margin-top: 0%;
+    background-image:url(http://hdqwalls.com/wallpapers/4k-galaxy-space-i9.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #000000;
+    max-height: 1000%;
+    overflow: auto;
+  }
+  
+  
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.733);
+        width: 100%;
+    }
+    .content {
+        display: inline-flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin: 4%;
+        border-radius: 80px 0px;
+        border: #000000 solid 2px;
+        background-color: #5400853f;
+    }
+    .right {
+        margin: 10px;
+        margin-left: 00px;
+        min-width: 0%;
+        padding: 0px;
+    }
+    .imagen{
+        width: 90%;
+        border: 2px solid rgb(14, 12, 13);
+        box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+        border-radius: 100%;
+        border: 5px solid black;
+    }
+    .detailTitle {
+        text-align: center;
+        font-size: 30px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: rgb(255, 255, 255);
+        background-color: rgba(134, 0, 167, 0.144);
+        border-radius: 80px 0px;
+        text-shadow: 2px 2px 2px rgb(230, 0, 238);
+        border: 2px solid rgba(0, 0, 0, 0.466);
+    }
+    .left {
+        margin-top: 0px;
+        width:100%;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items:flex-start;
+        justify-content:center;
+        border-radius: 80px 0px;
+        border: #00000000 solid 2px;
+        background-color: #54008500;
+        padding: 0%;
+    }
+    body {
+        margin-top: 5%;
+        background-image:url(http://hdqwalls.com/wallpapers/4k-galaxy-space-i9.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-color: #000000;
+        max-height: 1000%;
+        overflow: auto;
+      }
+}

@@ -1,0 +1,171 @@
+.nav{
+    border: 2px solid rgb(0, 0, 0);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(134, 0, 167, 0.185)), url("https://altvr.com/wp-content/uploads/2016/07/rick-and-morty-top-banner-two-1.png");
+    background-size: auto;
+    background-repeat:repeat;
+    background-position: left 80%;
+    position: fixed;
+    background-color: #000000a2;
+    padding-bottom: 30px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.384);
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+.nav:hover h1{
+    display: none;
+}
+.nav:hover{
+    height:155px; 
+}
+.nav:hover .boton{
+    display: block;
+}
+.nav:hover .inputnav{
+    display: block;
+}
+.nav:hover .botonnav{
+    display: block;
+}
+.nav:hover .contenido{
+    display: flex;
+}
+.contenido{
+    display:none;
+    justify-content: space-evenly;
+    align-items:flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 120px;
+}
+.boton {
+border: 2px solid #000000;
+padding: 5px 10px 5px 10px;
+color: rgb(0, 0, 0);
+width: 100px;
+height: 30px;
+background-color: rgb(216, 216, 216);
+box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+margin-top: -10px;
+display: none;
+}
+.boton:hover{
+    background-color: #000000;
+    color: aliceblue;
+    size: 10px;
+}
+.inputnav{
+    display:none;
+    width: 110%;
+    height: 110%;
+    text-align: center;
+    margin-top: 5px;
+    font-size: large;
+    color: #0fb600;
+    border: 2px transparent;
+    text-shadow: 0.5px 0.5px 2px#000000;
+    background-color: #000000b4;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.562);
+    margin-right: 0px;
+}
+.botonnav {
+display: none;
+color: rgb(0, 0, 0);
+width: auto;
+height: 33px;
+margin-top: 3px;
+background-color: rgb(216, 216, 216);
+box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+}
+button:hover{
+    background-color: #000000;
+    color: aliceblue;
+    size: 10px;
+}
+.in{
+    display: flex;
+    flex-direction: row;
+}
+.Error img{
+    width: 750px;
+    padding-left: 300px;
+}
+.logout{
+    margin-left: -260px;
+    display: flex;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    font-size: 15px;
+}
+@media screen and (max-width: 768px) {
+    body{
+        padding-top: 15%;
+    }
+    .nav{
+        border: 2px solid rgb(0, 0, 0);
+        background-size:auto;
+        background-repeat:repeat;
+        background-position: 50% 80%;
+        height: 150px;
+        padding-bottom: 0px;
+    }
+    h1{
+        font-size: 1.2rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .boton {
+        display: flex;
+        border: 2px solid #000000;
+        font-size: auto;
+        color: rgb(0, 0, 0);
+        width: 110%;
+        height: 20%;
+        box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    }
+    .contenido{
+        display:flex;
+        justify-content: space-between;
+        width: auto;
+        height: fit-content;
+        align-items:center;
+        padding-left: 0px;
+        padding-right: 0;
+        padding-top: 5%;
+        margin-top: 3%;
+        }
+    .inputnav{
+        display:flex;
+        width: 110%;
+        height: 100%;
+        font-size: auto;
+        background-color: #ffffff;
+        box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.562);
+    }
+    .nav:hover {
+        height: 150px;
+      }
+      .nav:hover .contenido{
+        display:flex;
+        align-items:center;
+        padding-left: 0px;
+        padding-right: 0;
+        padding-top: 5%;
+        justify-content: space-between;
+    }
+    .nav:hover h1{
+        display: flex;
+    }
+    .botonnav {
+        display: block;
+        color: rgb(0, 0, 0);
+        width: 50%;
+        height: 30%;
+        margin-top: 3px;
+        background-color: rgb(216, 216, 216);
+        box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+        }
+ }

@@ -1,0 +1,151 @@
+.cardF {
+display: inline-flex;
+flex-direction: column;
+justify-content: center;
+border: 2px solid rgba(0, 0, 0, 0);
+background-color: rgba(0, 0, 0, 0.651);;
+width: 200px;
+height: auto;
+text-align: center;
+margin: 10px;
+margin-top: 10px;
+box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.425);
+max-width: 100%;
+border-radius: 10px;
+}
+.containerF {
+    padding-top: 40px;
+}
+.cardF:hover{
+width: 190px;
+background-color: rgba(0, 0, 0, 0.671)
+}
+.cardF h2{
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 1.2rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#filtrar {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 30px;
+    padding-top: auto;
+}
+
+select{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter{
+    background-color: rgba(0, 0, 0, 0.651);
+    justify-content:first baseline;
+    border-radius: 20px 0px 0px 20px;
+    width: 200px;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100px;
+
+}
+
+.cardscont {
+    background-color: rgba(0, 0, 0, 0.507);
+    border: 2px solid rgba(0, 255, 34, 0.253);
+    border-radius: 20px 0px;
+    display:flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.filter button{
+    display: flex;
+    flex-direction: column;
+    margin-left: -13%;
+}
+.tituloF {
+    display: inline-flex;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.466);
+    border: 2px solid rgba(0, 0, 0, 0.253);
+    text-align: center;
+    align-items: center;
+    color:rgb(60, 255, 0);
+    font-size: 200%;
+}
+
+@media screen and (max-width: 768px){
+    .cardF{
+        display:inline-flex;
+        flex-direction:column;
+        justify-content: center;
+        border: 2px solid rgba(0, 168, 8, 0);
+        background-color: rgba(0, 0, 0, 0.651);
+        width: 20%;
+        min-width: 100px;
+        height: max-content;
+        text-align: center;
+        box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.425);
+        max-width:fit-content;
+        border-radius: 10px;
+    }
+    .cardF h2{
+        display: flex;
+        font-size: 0.9rem;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    .cardF:hover {
+        width: 19%
+    }
+    .filter{
+        display:flex;
+        background-color: rgba(0, 0, 0, 0.432);
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        width:100%;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-radius: 20px 0px 0px;
+    }
+    .filter button{
+        display: flex;
+        flex-direction: column;
+        margin-left: 0%;
+    }
+    select{
+        display: inline-flex;
+        max-width: 80px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .cardscont {
+        background-color: rgba(0, 0, 0, 0.397);
+        border: 2px solid black;
+        border-radius: 40px 0px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+.containerF {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.tituloF {
+    display:flex;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.336);
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.753);
+    font-size: 100%;
+}
+}

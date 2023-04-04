@@ -1,0 +1,52 @@
+.ab h4{
+    color: blanchedalmond;
+}
+.ab {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.493);
+}
+.ab img{
+    width: auto;
+}
+.ab h3{
+    color: rgb(255, 255, 255);
+}
+.ab h4{
+    color: rgb(255, 255, 255);
+}
+.ab h1 {
+    color: yellow;
+}
+
+.arg {
+    height: 50px;
+    margin-top: -90px;
+    margin-left: 600px;
+    border: 2px solid transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .ab img{
+        width: 80%;
+    }
+    .arg {
+        display: none;
+        min-height: 50%;
+        margin: 20%;
+        border: 2px solid transparent;
+    }
+    .ab {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: max-content;
+        padding-top: 60px;
+        background-color: rgba(0, 0, 0, 0.493);
+    }
+}
