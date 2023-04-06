@@ -1,17 +1,23 @@
 const http = require('http');
-const data = require("./utils/data")
+const getCharById = require("./controllers/getCharById")
+const getChars = require("./controllers/getChars")
 
 http.createServer((req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    if (req.url.startsWith('/rickandmorty/character/')) {
-        const id = parseInt(req.url.split('/').pop());
-        const character = data.find(char => char.id === id);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(character));
-    } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('Not Found');
+    const url = req.url.split("/")
+    const param1 = url[1]
+    const param2 = url[2]
+    const param3 = url[3]
+    if (param1 === "rickandmorty" && param2 === "character" && param3) {
+        if (param3) {
+            getCharById(res, param3)
+        } else {
+            res.statusCode = 400
+            res.end('Solicitud incorrecta: falta el parámetro ID')
+        }
+    }else {
+    getChars(res)
     }
 }).listen(3001, () => {
-    console.log('Server running at http://localhost:3001');
+    console.log('Servidor en ejecución en http://localhost:3001');
 });

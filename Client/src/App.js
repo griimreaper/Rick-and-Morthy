@@ -11,17 +11,18 @@ import Error from "./components/Error"
 import Favorites from "./components/favorites/Favorites"
 import { Link } from "react-router-dom"
 import { useDispatch } from 'react-redux';
-import { removeFav } from './redux/actions';
+import { addCharacter, addLocation, removeFav, searchCharacters } from './redux/actions';
+import HistoryNavigate from './components/HistoryNavigate';
 
 function App() {
    const [characters, setCharacters] = useState([])
    const [access, setAccess] = useState(false)
    const navigate = useNavigate()
+   const location = useLocation()
    const email = "leonelbehnke@gmail.com"
    const password = "Synyster6"
 
    const dispatch = useDispatch()
-
    function login(userData) {
       if (userData.password === password && userData.email === email) {
          setAccess(true);
@@ -38,27 +39,33 @@ function App() {
       !access && navigate('/');
    }, [access]);
 
+   useEffect(() => {
+      axios.get(`http://localhost:3001/rickandmorty/character`)
+         .then((results) => {
+            setCharacters([...results.data.results])
+            dispatch(addCharacter(results.data.results))
+         })
+         .catch((error) => {
+            console.log(error)
+         })
+   }, [])
+
    function onSearch(id) {
-      axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-         if (data.name) {
-            let exist = characters.find((ch) => ch.id === data.id);
-            if (exist) {
-               alert("ya existe")
-            } else {
-               setCharacters((oldChars) => [...oldChars, data]);
-            }
-         } else {
-            window.alert('¡No hay personajes con este ID!');
-         }
-      });
-   }
+      axios
+         .get(`http://localhost:3001/rickandmorty/character/${id}`)
+         .then(({ data }) => {
+            dispatch(searchCharacters(data))
+         })
+   };
 
    function onClose(id) {
       setCharacters((oldChars) => { return oldChars.filter((ch) => ch.id !== id) })
       dispatch(removeFav(id))
    }
 
-   const location = useLocation()
+   useEffect(() => {
+      dispatch(addLocation(location.pathname))
+   })
    return (
       <div className='App'>
          {location.pathname !== "/" && <Nav logout={logout} onSearch={onSearch}></Nav>}
@@ -74,6 +81,7 @@ function App() {
             <Route path="/detail/:id" element={<Detail />} />
             <Route path="/:cualquier" element={<Error></Error>} />
             <Route path="/favorites" element={<Favorites></Favorites>} />
+            <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />
          </Routes>
       </div>
    );

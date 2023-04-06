@@ -99,6 +99,17 @@ button:hover{
     padding-top: 5px;
     font-size: 15px;
 }
+.HistoryNavigate {
+    width: 150px;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #ffffff00;
+}
+.HistoryNavigate h2{
+    text-align: left;
+    display: flex;
+    background-color: #00000036;
+}
 @media screen and (max-width: 768px) {
     body{
         padding-top: 15%;
