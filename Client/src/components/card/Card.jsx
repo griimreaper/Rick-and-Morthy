@@ -5,9 +5,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 
 export default function Card(props) {
-   const [isFav, setIsFav] = useState({
-      isFav: false
-   })
+   const [isFav, setIsFav] = useState(false)
 
    const myFavorites = useSelector(state => state.myFavorites)
    const dispatch = useDispatch()
@@ -15,9 +13,7 @@ export default function Card(props) {
    useEffect(() => {
       myFavorites.forEach((fav) => {
          if (fav.id === props.id) {
-            setIsFav({
-               isFav: true
-            });
+            setIsFav(true);
          }
       });
    }, [myFavorites]);
@@ -26,34 +22,28 @@ export default function Card(props) {
    const { name, status, species, id, gender, origin, image, onClose } = props
 
    const handleFavorite = () => {
-      if (isFav.isFav === true) {
-         setIsFav({
-            isFav: false
-         })
-         dispatch(removeFav(id))
+      if (isFav) {
+         setIsFav(false);
+         dispatch(removeFav(id));
+      } else {
+         dispatch(
+            addFav({
+               name,
+               status,
+               species,
+               gender,
+               origin,
+               id,
+               image,
+            })
+         );
+         setIsFav(true);
       }
-      if (isFav.isFav === false) {
-         setIsFav({
-            isFav: true
-         })
-         dispatch(addFav({
-            name,
-            status,
-            species,
-            gender,
-            origin,
-            id,
-            image,
-            onClose,
-            isFav: true
-         }))
-      }
-   }
-
+   };
    return (
       <div className="card">
          {
-            isFav.isFav ? (
+            isFav === true ? (
                <button className="favbutton" onClick={handleFavorite}>❤️</button>
             ) : (
                <button className="favbutton" onClick={handleFavorite}>🤍</button>

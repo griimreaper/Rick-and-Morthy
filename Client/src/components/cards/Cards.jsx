@@ -3,8 +3,9 @@ import Card from '../card/Card';
 import "./Cards.css"
 import Paginate from './Paginate';
 
-export default function Cards({ onClose }) {
-   const { characters } = useSelector((state) => state)
+
+export default function Cards({ onClose, characters }) {
+
    const { numPage } = useSelector((state) => state)
 
    let desde = (numPage-1) * 8
@@ -13,6 +14,7 @@ export default function Cards({ onClose }) {
    let cantPages = Math.round(characters.length / 8)
 
    let viewCharacters = characters.slice(desde, hasta)
+   
    return <div className="cards_container">
          {viewCharacters.map((ch) => {
          const { id, name, status, species, gender, origin, image } = ch

@@ -21,7 +21,7 @@ export default function Nav({ onSearch, logout }) {
           <button className='boton' onClick={()=>dispatch(resetCharacters())}>Home</button>
         </Link>
         <SearchBar onSearch={onSearch}></SearchBar>
-        <button onClick={logout} >LogOut</button>
+        <button onClick={logout} className='logout'>LogOut</button>
       </div>
     </div>
   )

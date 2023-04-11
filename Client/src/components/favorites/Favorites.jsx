@@ -45,14 +45,14 @@ export default function Favorites() {
                     <button onClick={handleReset}>All Characters</button>
                     <div className="containerF">
                         <select onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
-                            <option value="DEFAULT" disable>
+                            <option value="DEFAULT" disable="true">
                                 Id
                             </option>
                             <option value="Ascendente">Ascendente</option>
                             <option value="Descendente">Descendente</option>
                         </select>
                         <select onChange={handleFilter} name="filter" defaultValue={"DEFAULT"}>
-                            <option value="DEFAULT" disable>
+                            <option value="DEFAULT" disable="true">
                                 Genero
                             </option>
                             <option value="Male">Hombre</option>
@@ -61,14 +61,14 @@ export default function Favorites() {
                             <option value="unknown">Desconocido</option>
                         </select>
                         <select onChange={handleSortAlphabetically} name="filterAlphabethycally" defaultValue={"DEFAULT"}>
-                            <option value="DEFAULT" disable>
+                            <option value="DEFAULT" disable="true">
                                 Alfabeticamente
                             </option>
                             <option value="Descendente">A - Z</option>
                             <option value="Ascendente">Z - A</option>
                         </select>
                         <select onChange={handleStatus} name="status" defaultValue={"DEFAULT"}>
-                            <option value="DEFAULT" disable>
+                            <option value="DEFAULT" disable="true">
                                 Estado
                             </option>
                             <option value="Alive">Vivo</option>

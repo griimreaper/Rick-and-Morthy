@@ -17,27 +17,28 @@ import HistoryNavigate from './components/HistoryNavigate';
 function App() {
    const [characters, setCharacters] = useState([])
    const [access, setAccess] = useState(false)
-   const navigate = useNavigate()
-   const location = useLocation()
-   const email = "leonelbehnke@gmail.com"
-   const password = "Synyster6"
+   const navigate = useNavigate();
+   const location = useLocation();
+   const dispatch = useDispatch();
 
-   const dispatch = useDispatch()
    function login(userData) {
-      if (userData.password === password && userData.email === email) {
-         setAccess(true);
-         navigate('/home');
-      }
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
-
+console.log(characters)
    function logout() {
       setAccess(false);
       navigate('/');
    }
 
-   useEffect(() => {
-      !access && navigate('/');
-   }, [access]);
+   // useEffect(() => {
+   //    !access && navigate('/');
+   // }, [access]);
 
    useEffect(() => {
       axios.get(`http://localhost:3001/rickandmorty/character`)
@@ -59,8 +60,8 @@ function App() {
    };
 
    function onClose(id) {
-      setCharacters((oldChars) => { return oldChars.filter((ch) => ch.id !== id) })
-      dispatch(removeFav(id))
+      dispatch(removeFav(id));
+      setCharacters(characters.filter((ch) => ch.id !== id));
    }
 
    useEffect(() => {

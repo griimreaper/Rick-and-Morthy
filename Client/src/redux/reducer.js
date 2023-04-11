@@ -14,7 +14,7 @@ export default (state = initialState, { type, payload }) => {
         case HANDLE_NUMBER:
             return {
                 ...state,
-                numPage:payload
+                numPage: payload
             }
         case RESET_CHARACTERS:
             return {
@@ -63,16 +63,14 @@ export default (state = initialState, { type, payload }) => {
         case ADD_FAV:
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, payload],
-                myFavoritesOrigin: [...state.myFavorites, payload]
-            }
+                myFavorites: payload,
+                myFavoritesOrigin:payload
+            };
         case REMOVE_FAV:
-            const idDelete = state.myFavorites.filter((pj) => pj.id !== payload)
             return {
                 ...state,
-                myFavorites: idDelete,
-                myFavoritesOrigin: idDelete
-            }
+                myFavorites: payload
+            };
         case FILTRAR_NOMBRE:
             const sortedFavorites = state.myFavorites.sort((a, b) => {
                 const nameA = a.name.toUpperCase()

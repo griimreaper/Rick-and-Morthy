@@ -22,16 +22,16 @@ export default function Detail() {
   const { name, status, species, gender, origin, image } = character
 
   return (
-    <div class="container">
+    <div className="container">
       <h1 className="detailTitle">{name}</h1>
-      <div class="content">
-        <div class="left">
+      <div className="content">
+        <div className="left">
           <h2 className='description'>❤️  STATUS: {status} </h2>
           <h2 className='description'>🥒  SPECIES: {species} </h2>
           <h2 className='description'>👤  GENDER: {gender} </h2>
           {origin && <h2 className='description'  >🏳️ ORIGIN: {origin.name}</h2>}
         </div>
-        <div class="right">
+        <div className="right">
           <img className="imagen" src={image} alt={name} />
         </div>
       </div>

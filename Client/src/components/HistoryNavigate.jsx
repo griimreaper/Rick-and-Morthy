@@ -6,9 +6,9 @@ export default function HistoryNavigate() {
     const {location} = useSelector((state)=> state)
     return (
         <div className='HistoryNavigate'>
-        {location.map((loc)=>(
+        {location.map((loc, i)=>(
             <Link to={loc}>
-            <h2>{loc}</h2>
+            <h2 key={i}>{loc}</h2>
             </Link>)
         )}
         </div>
