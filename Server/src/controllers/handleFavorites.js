@@ -1,5 +1,9 @@
 let myFavorites = [];
 
+const getFav = (req, res) =>{
+    return res.json(myFavorites)
+}
+
 const postFav = (req, res) => {
     const { id, status, name, species, origin, image, gender } = req.body
     const character = { id, status, name, species, origin, image, gender }
@@ -18,6 +22,7 @@ const deleteFav = (req, res) => {
 
 module.exports = {
     postFav,
-    deleteFav
+    deleteFav,
+    getFav
 }
 

@@ -3,36 +3,78 @@ import CardFavorite from "./CardFavorite"
 import "./Favorites.css"
 import React from 'react'
 import { filtrarNombre, orderCards, filterCards, reset, orderStatus } from "../../redux/actions"
-
+import axios from "axios";
+import { useState, useEffect } from "react"
 export default function Favorites() {
-    const { myFavorites } = useSelector((state) => state)
+
+    const [myFavorites, setMyFavorites] = useState([]);
+    const [myFavoritesOrigin, setMyFavoritesOrigin] = useState([])
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/rickandmorty/fav')
+            .then((response) => {setMyFavorites(response.data);
+                setMyFavoritesOrigin(response.data)})
+            .catch(error => console.error(error));
+    }, []);
+
+    function sortAlphabetically(a, b) {
+        const nameA = a.name.toLowerCase()
+        const nameB = b.name.toLowerCase()
+
+        if (nameA < nameB) {
+            return -1
+        }
+        if (nameA > nameB) {
+            return 1
+        }
+        return 0
+    }
 
     const handleSortAlphabetically = (e) => {
         e.preventDefault()
         const { value } = e.target
-        return dispatch(filtrarNombre(value))
+        if (value === "Ascendente") {
+            const sortedFavorites = myFavorites.slice().sort(sortAlphabetically)
+            setMyFavorites(sortedFavorites)
+        } else if (value === "Descendente") {
+            const sortedFavorites = myFavorites.slice().sort(sortAlphabetically).reverse()
+            setMyFavorites(sortedFavorites)
+        }
+        dispatch(filtrarNombre(value))
     }
 
     const handleOrder = (e) => {
         e.preventDefault()
         const { value } = e.target
+        if (value === "Ascendente") {
+            const sortedFavorites = myFavorites.slice().sort((a, b) => a.id - b.id)
+            setMyFavorites(sortedFavorites)
+        } else if (value === "Descendente") {
+            const sortedFavorites = myFavorites.slice().sort((a, b) => b.id - a.id)
+            setMyFavorites(sortedFavorites)
+        }
         dispatch(orderCards(value))
     }
 
     const handleFilter = (e) => {
-        e.preventDefault()
-        const { value } = e.target
-        dispatch(filterCards(value))
-    }
+        e.preventDefault();
+        const { value } = e.target;
+        const filteredFavorites = myFavoritesOrigin.filter((pj) => pj.gender === value);
+        setMyFavorites(filteredFavorites);
+        dispatch(filterCards(value));
+    };
 
     const handleStatus = (e) => {
         e.preventDefault()
         const { value } = e.target
+        const filteredFavorites = myFavoritesOrigin.filter((pj) => pj.status === value);
+        setMyFavorites(filteredFavorites);
         dispatch(orderStatus(value))
     }
 
     const handleReset = () => {
+        setMyFavorites(myFavoritesOrigin)
         return dispatch(reset())
     }
 
@@ -64,8 +106,8 @@ export default function Favorites() {
                             <option value="DEFAULT" disable="true">
                                 Alfabeticamente
                             </option>
-                            <option value="Descendente">A - Z</option>
-                            <option value="Ascendente">Z - A</option>
+                            <option value="Ascendente">A - Z</option>
+                            <option value="Descendente">Z - A</option>
                         </select>
                         <select onChange={handleStatus} name="status" defaultValue={"DEFAULT"}>
                             <option value="DEFAULT" disable="true">

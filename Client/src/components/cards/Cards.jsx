@@ -8,13 +8,13 @@ export default function Cards({ onClose, characters }) {
 
    const { numPage } = useSelector((state) => state)
 
-   let desde = (numPage-1) * 8
-   let hasta = numPage * 8
+   let desde = (numPage-1) * 12
+   let hasta = numPage * 12
 
-   let cantPages = Math.round(characters.length / 8)
+   let cantPages = Math.round(characters.length / 12)
 
    let viewCharacters = characters.slice(desde, hasta)
-   
+
    return <div className="cards_container">
          {viewCharacters.map((ch) => {
          const { id, name, status, species, gender, origin, image } = ch

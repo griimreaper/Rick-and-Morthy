@@ -11,6 +11,14 @@
     flex-direction: row;
     justify-content: space-between;
 }
+.tituloEp{
+    color:#ffffff;
+    background-color: #7700ff0a;
+    box-shadow: 0px 0px 6px #000000;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
 
 .left {
     margin-top: 30px;
@@ -25,6 +33,7 @@
     background-color: #5400853f;
     padding: 20px;
 }
+
 
 .right {
     margin: 30px;

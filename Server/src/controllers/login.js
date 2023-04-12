@@ -1,9 +1,11 @@
-const users = require("../utils/users")
+const process = require("dotenv").config()
+
+const emailv = process.parsed.EMAIL
+const passwordv = process.parsed.PASSWORD
 
 const login = function (req, res) {
     const { email, password } = req.query
-    const verification = users.find((u) => u.email === email && u.password === password)
-    if (verification) {
+    if (email === emailv && password === passwordv) {
         return res.status(200).json({ access: true })
     }
     return res.status(200).json({ access: false })

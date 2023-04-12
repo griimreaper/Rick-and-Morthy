@@ -3,16 +3,22 @@ import "./Card.css"
 import { addFav, removeFav } from "../../redux/actions";
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
+import axios from "axios"
 
 export default function Card(props) {
    const [isFav, setIsFav] = useState(false)
-
-   const myFavorites = useSelector(state => state.myFavorites)
+   const [myFavorites, setMyFavorites] = useState([]);
    const dispatch = useDispatch()
 
    useEffect(() => {
+      axios.get('http://localhost:3001/rickandmorty/fav')
+         .then(response => setMyFavorites(response.data))
+         .catch(error => console.error(error));
+   }, []);
+
+   useEffect(() => {
       myFavorites.forEach((fav) => {
-         if (fav.id === props.id) {
+         if (props.id === fav.id) {
             setIsFav(true);
          }
       });

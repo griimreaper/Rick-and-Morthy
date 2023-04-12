@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import "./Detail.css"
+import Episode from '../Episode/Episode'
 
 export default function Detail() {
   const { id } = useParams()
@@ -19,7 +20,18 @@ export default function Detail() {
     return setCharacter({});
   }, [id]);
 
-  const { name, status, species, gender, origin, image } = character
+  const { name, status, species, gender, origin, image, episode } = character
+
+  const idEp = () => {
+    if (episode) {
+      const idEp = episode.map((ep) => {
+        const id = ep.split("/").pop()
+        return id
+      }
+      )
+      return idEp
+    }
+  }
 
   return (
     <div className="container">
@@ -34,6 +46,14 @@ export default function Detail() {
         <div className="right">
           <img className="imagen" src={image} alt={name} />
         </div>
+      </div>
+      <div>
+      <h1 className="tituloEp">Episodes with {name}</h1>
+      {episode && idEp().map((n)=>{
+        return (<Episode
+          id={n}
+          key={n}/>)
+      })}
       </div>
     </div>)
 }

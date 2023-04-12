@@ -13,6 +13,7 @@ import { Link } from "react-router-dom"
 import { useDispatch } from 'react-redux';
 import { addCharacter, addLocation, removeFav, searchCharacters } from './redux/actions';
 import HistoryNavigate from './components/HistoryNavigate';
+import DetailEpisode from './components/Episode/DetailEpisode';
 
 function App() {
    const [characters, setCharacters] = useState([])
@@ -21,16 +22,19 @@ function App() {
    const location = useLocation();
    const dispatch = useDispatch();
 
-   function login(userData) {
-      const { email, password } = userData;
-      const URL = 'http://localhost:3001/rickandmorty/login/';
-      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+   async function login(userData) {
+      try {
+         const { email, password } = userData;
+         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const { data } = await axios.get(URL + `?email=${email}&password=${password}`);
          const { access } = data;
          setAccess(data);
          access && navigate('/home');
-      });
+      } catch (error) {
+         console.log(error);
+      }
    }
-console.log(characters)
+
    function logout() {
       setAccess(false);
       navigate('/');
@@ -43,21 +47,22 @@ console.log(characters)
    useEffect(() => {
       axios.get(`http://localhost:3001/rickandmorty/character`)
          .then((results) => {
-            setCharacters([...results.data.results])
-            dispatch(addCharacter(results.data.results))
+            setCharacters([...results.data])
+            dispatch(addCharacter(results.data))
          })
          .catch((error) => {
             console.log(error)
          })
    }, [])
 
-   function onSearch(id) {
-      axios
-         .get(`http://localhost:3001/rickandmorty/character/${id}`)
-         .then(({ data }) => {
-            dispatch(searchCharacters(data))
-         })
-   };
+   async function onSearch(id) {
+      try {
+         const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
+         setCharacters([data]);
+      } catch (error) {
+         alert("Not Found");
+      }
+   }
 
    function onClose(id) {
       dispatch(removeFav(id));
@@ -80,6 +85,7 @@ console.log(characters)
             <Route path="/home" element={<Cards onClose={onClose} className="cards" characters={characters} />} />
             <Route path="/about" element={<About />} />
             <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/episode/:id" element={<DetailEpisode />} />
             <Route path="/:cualquier" element={<Error></Error>} />
             <Route path="/favorites" element={<Favorites></Favorites>} />
             <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />

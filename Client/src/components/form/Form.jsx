@@ -29,6 +29,10 @@ export default function Login({ login }) {
         )
     }
 
+    const printE = (error) => {setTimeout(() => {
+        return error
+    }, 2000); }
+
     return (
         <div className="contenidoL">
             <h2>Welcome dude, Buuurrrrp!.</h2>

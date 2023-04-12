@@ -34,8 +34,8 @@ color: rgb(255, 255, 255);
 }
 
 p {
-color: rgb(255, 0, 0);
-background-color: rgb(48, 0, 0);
+color: rgb(0, 255, 42);
+
 }
 
 @media screen and (max-width: 768px) {
