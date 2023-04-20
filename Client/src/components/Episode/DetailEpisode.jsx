@@ -52,16 +52,16 @@ export default function DetailEpisode() {
     }
 
     return (
-        <div>
+        <div className='epBody'>
             {episode &&
                 <div>
-                    <h1>{episode.name}</h1>
+                    <h1 className='title'>{episode.name}</h1>
                     <div>
-                        <h2>Episodio:{episode.episode}</h2>
-                        <h2>Fecha de lanzamiento:{episode.air_date}.</h2>
+                        <h2 className='content'>Episode: {episode.episode}</h2>
+                        <h2 className='content'>Air date: {episode.air_date}.</h2>
                     </div>
                     <div>
-                        <h1>Reparto</h1>
+                        <h1>Characters</h1>
                         <div>
                             {characters.map((ch) => {
                                 const { id, name, status, species, gender, origin, image } = ch
@@ -73,7 +73,6 @@ export default function DetailEpisode() {
                                     gender={gender}
                                     origin={origin.name}
                                     image={image}
-                                    onClose={onClose}
                                 >
                                 </Card>);
                             })}

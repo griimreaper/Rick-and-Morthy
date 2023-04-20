@@ -55,7 +55,9 @@ export default function Card(props) {
                <button className="favbutton" onClick={handleFavorite}>🤍</button>
             )
          }
+         {onClose &&
          <button className="x" onClick={() => onClose(id)}>X</button>
+         }
          <Link to={`/detail/${id}`}>
             <h2 id={id}>{name}</h2>
             <img src={image} alt={name} />

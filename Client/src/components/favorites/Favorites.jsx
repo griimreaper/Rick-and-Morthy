@@ -85,7 +85,7 @@ export default function Favorites() {
                 <div className="filter">
                     <h2 id="filtrar">Filtrar</h2>
                     <button onClick={handleReset}>All Characters</button>
-                    <div className="containerF">
+                    <div className="containerFi">
                         <select onChange={handleOrder} name="order" defaultValue={"DEFAULT"}>
                             <option value="DEFAULT" disable="true">
                                 Id

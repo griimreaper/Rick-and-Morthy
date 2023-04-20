@@ -1,7 +1,7 @@
 let myFavorites = [];
 
 const getFav = (req, res) =>{
-    return res.json(myFavorites)
+    return res.status(200).json(myFavorites)
 }
 
 const postFav = (req, res) => {

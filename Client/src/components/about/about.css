@@ -10,9 +10,7 @@
     padding-top: 60px;
     background-color: rgba(0, 0, 0, 0.493);
 }
-.ab img{
-    width: auto;
-}
+
 .ab h3{
     color: rgb(255, 255, 255);
 }
@@ -20,7 +18,8 @@
     color: rgb(255, 255, 255);
 }
 .ab h1 {
-    color: yellow;
+    color: rgba(0, 255, 170, 0.966);
+    text-shadow: 0px 0px 6px rgb(255, 238, 0);
 }
 
 .arg {

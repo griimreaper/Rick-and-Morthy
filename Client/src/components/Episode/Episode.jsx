@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 export default function Episode({id}) {
     const [episode, setEpisode] = useState()
 
-    if(id)useEffect(() => {
+    useEffect(() => {
         axios(`http://localhost:3001/rickandmorty/episode/${id}`)
             .then(({ data }) => {
             if (data.id) {

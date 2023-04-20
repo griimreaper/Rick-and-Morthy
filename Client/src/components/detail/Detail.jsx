@@ -10,14 +10,21 @@ export default function Detail() {
   const [character, setCharacter] = useState({})
 
   useEffect(() => {
-    axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
-      if (data.name) {
-        setCharacter(data);
-      } else {
-        window.alert('No hay personajes con ese ID');
+    const fetchData = async () => {
+      try {
+        const response = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+        const { data } = response;
+        if (data.name) {
+          setCharacter(data);
+        } else {
+          window.alert('No hay personajes con ese ID');
+        }
+      } catch (error) {
+        console.error(error);
       }
-    });
-    return setCharacter({});
+    };
+    fetchData();
+    return () => setCharacter({});
   }, [id]);
 
   const { name, status, species, gender, origin, image, episode } = character
@@ -48,12 +55,15 @@ export default function Detail() {
         </div>
       </div>
       <div>
-      <h1 className="tituloEp">Episodes with {name}</h1>
-      {episode && idEp().map((n)=>{
-        return (<Episode
-          id={n}
-          key={n}/>)
-      })}
+      {episode &&
+        <h1 className="tituloEp">Episodes with {name}</h1>}
+        {episode && idEp().map((n) => {
+          return (
+            <Episode
+              id={n}
+              key={n} />
+          )
+        })}
       </div>
     </div>)
 }

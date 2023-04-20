@@ -45,7 +45,7 @@ export default function Login({ login }) {
             <p>{errors.password}</p>
             {Object.keys(errors).length === 0 && userData.email !== "" &&
                 <Link to="/home">
-                    <button onClick={handleSubmit}>Ingresar</button>
+                    <button className="botonF" onClick={handleSubmit}>Ingresar</button>
                 </Link>}
         </div>
     )

@@ -8,16 +8,17 @@
 }
 .Page{
     display: flex;
-    width: 400px;
+    margin: auto;
+    width: 300px;
     height: 40px;
-    margin-left: 35.5%;
-    justify-content: space-between;
+    position: static;
+    justify-content: space-evenly;
     align-items: center;
     background-color: rgb(0, 0, 0);
-    border-radius: 15%
+    border-radius:50pc
 }
 .Page p {
-    color: forestgreen;
+    color: rgb(103, 103, 103);
     border-radius: 50%;
     margin: 10px;
     background-color: rgba(14, 12, 12, 0);
@@ -31,22 +32,24 @@
     background-color: black;
 }
 .Page button{
-    width: 100px;
-    height: 30px;
-    background-color: rgba(0, 170, 28, 0.527);
-    box-shadow: 0px 0px 5px rgb(0, 138, 23);
-    border-radius: 10%;
+    background-color: rgb(255, 238, 0);
+    transition: all 0.3s ease 0s;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    border-radius: 50px;
+    color: rgb(0, 0, 0);
+padding: 5px 10px 5px 10px;
+cursor: pointer;
+width: 70px;
+height: 30px;
     border: 2px solid transparent;
-    color: aliceblue;
     cursor: pointer;
 }
 .Page button:hover{
-    width: 100px;
-    height: 30px;
-    background-color: rgba(0, 145, 24, 0.959);
-    box-shadow: 0px 0px 5px rgb(0, 138, 23);
-    border-radius: 10%;
+    background-color: rgba(0, 255, 170, 0.966);
+    color: black;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0);
+    size: 10px;
     border: 2px solid transparent;
-    color: rgba(247, 247, 247, 0.897);
+    color: black;
     cursor: pointer;
 }

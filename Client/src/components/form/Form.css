@@ -10,7 +10,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%, -50%); 
 padding: 30px 30px;
-background-color: rgba(0, 0, 0, 0.685);
+background-color: rgba(0, 0, 0, 0.704);
 box-shadow: 6px 2px rgba(0, 0, 0, 0.199);
 border-radius: 10vw;
 border: 0.1em solid rgb(0, 255, 0);
@@ -26,6 +26,18 @@ color: aliceblue;
 display: flex;
 flex-direction: column;
 text-align: center;
+}
+.botonF{
+    border: none;   
+    background-color: rgb(255, 238, 0);
+    transition: all 0.3s ease 0s;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    border-radius: 50px;
+    color: rgb(0, 0, 0);
+    cursor:pointer;
+    padding: 5px 10px 5px 10px;
+    width: 100px;
+    height: 30px;
 }
 
 .contenidoL h2{

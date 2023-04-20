@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { addCharacter, addLocation, removeFav, searchCharacters } from './redux/actions';
 import HistoryNavigate from './components/HistoryNavigate';
 import DetailEpisode from './components/Episode/DetailEpisode';
+import Episodes from './components/Episode/Episodes';
 
 function App() {
    const [characters, setCharacters] = useState([])
@@ -60,6 +61,7 @@ function App() {
          const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
          setCharacters([data]);
       } catch (error) {
+         console.log(error.message)
          alert("Not Found");
       }
    }
@@ -74,22 +76,24 @@ function App() {
    })
    return (
       <div className='App'>
-         {location.pathname !== "/" && <Nav logout={logout} onSearch={onSearch}></Nav>}
-         {location.pathname !== "/" &&
-            <Link to="/favorites">
-               <button title="Tus Favoritos" className='favorites'></button>
-            </Link>
-         }
-         <Routes>
-            <Route path="/" element={<Form login={login} />} />
-            <Route path="/home" element={<Cards onClose={onClose} className="cards" characters={characters} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/detail/:id" element={<Detail />} />
-            <Route path="/episode/:id" element={<DetailEpisode />} />
-            <Route path="/:cualquier" element={<Error></Error>} />
-            <Route path="/favorites" element={<Favorites></Favorites>} />
-            <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />
-         </Routes>
+      {location.pathname !== "/" && <Nav logout={logout} onSearch={onSearch}></Nav>}
+      {location.pathname !== "/" &&
+      <Link to="/favorites">
+      <button title="Tus Favoritos" className='favorites'></button>
+      </Link>
+   }
+   <Routes>
+   <Route path="/" element={<Form login={login} />} />
+   <Route path="/home" element={<Cards onClose={onClose} className="cards" characters={characters} />} />
+   <Route path="/about" element={<About />} />
+   <Route path="/detail/:id" element={<Detail />} />
+   <Route path="/episode/:id" element={<DetailEpisode />} />
+   <Route path="/episodes" element={<Episodes />} />
+   <Route path="/:cualquier" element={<Error></Error>} />
+   <Route path="/favorites" element={<Favorites></Favorites>} />
+   <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />
+   </Routes>
+   <div class="ovni"></div>
       </div>
    );
 }

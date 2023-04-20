@@ -1,35 +1,49 @@
 .nav{
     border: 2px solid rgb(0, 0, 0);
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(134, 0, 167, 0.185)), url("https://altvr.com/wp-content/uploads/2016/07/rick-and-morty-top-banner-two-1.png");
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(134, 0, 167, 0.185)), url("https://s1.thcdn.com/widgets/96-en/40/main_banner-v2-035040.jpg");
     background-size: auto;
     background-repeat:repeat;
-    background-position: left 80%;
+    background-position: 60% 20%;
     position: fixed;
     background-color: #000000a2;
     padding-bottom: 30px;
-    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.384);
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.384);
+    display:inline-block;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1;
+    transition: all 0,7s ease 0s;
 }
-.nav:hover h1{
+
+.nav img{
+    width: 300px;
+    display: flex;
+    border: 2px solid transparent; 
+    margin: -30px 0px -60px -0px;
+}
+.nav:hover img{
     display: none;
 }
 .nav:hover{
-    height:155px; 
+    transform: translateY(-1px);
 }
 .nav:hover .boton{
     display: block;
+    text-decoration: none;
+    
 }
 .nav:hover .inputnav{
     display: block;
 }
 .nav:hover .botonnav{
     display: block;
+    text-decoration: none;
 }
 .nav:hover .contenido{
     display: flex;
+    transition: display 2s ease-in-out 3s;
+
 }
 .contenido{
     display:none;
@@ -37,53 +51,64 @@
     align-items:flex-end;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 120px;
+    padding-top: 50px;
 }
 .boton {
-border: 2px solid #000000;
+    border: none;   
+    background-color: rgb(255, 238, 0);
+    transition: all 0.3s ease 0s;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    border-radius: 50px;
+    color: rgb(0, 0, 0);
 padding: 5px 10px 5px 10px;
 cursor: pointer;
-color: rgb(0, 0, 0);
 width: 100px;
 height: 30px;
-background-color: rgb(216, 216, 216);
-box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
-margin-top: -10px;
 display: none;
 }
 .boton:hover{
-    background-color: #030000;
-    color: aliceblue;
+    background-color: rgba(0, 255, 170, 0.966);
+    color: black;
+    box-shadow: 0px 0px 15px rgb(255, 238, 0);
     size: 10px;
+    transform: translateY(-5px);
 }
 .inputnav{
-    display:none;
-    width: 110%;
-    height: 110%;
     text-align: center;
-    margin-top: 5px;
-    font-size: large;
-    color: #0fb600;
-    border: 2px transparent;
-    text-shadow: 0.5px 0.5px 2px#000000;
-    background-color: #000000b4;
-    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.562);
-    margin-right: 0px;
+    justify-content: center;
+    background-color: #000000;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    color: rgb(255, 238, 0);
+    font-size: 16px;
+    padding: 9px 20px;
+    transition: all 0.3s ease 0s;
+    width: 200px;
+}
+
+.inputnav:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px #FFC300;
 }
 .botonnav {
-display: none;
+    border: none;   
+    background-color: rgb(255, 238, 0);
+    transition: all 0.3s ease 0s;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    border-radius: 50px;
+    color: rgb(0, 0, 0);
+padding: 5px 10px 5px 10px;
 cursor: pointer;
-color: rgb(0, 0, 0);
-width: auto;
-border: 2px solid #000000;
-height: 33px;
-margin-top: 3px;
-background-color: rgb(216, 216, 216);
-box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+width: 70px;
+height: 30px;
+
+
 }
 button:hover{
-    background-color: #000000;
-    color: aliceblue;
+    background-color: rgba(0, 255, 170, 0.966);
+    color: black;
+    box-shadow: 0px 0px 15px rgb(255, 238, 0);
     size: 10px;
 }
 .in{
@@ -95,29 +120,33 @@ button:hover{
     padding-left: 300px;
 }
 .logout{
+    border: none;   
+    background-color: rgb(255, 238, 0);
+    transition: all 0.3s ease 0s;
+    box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
+    border-radius: 50px;
+    color: rgb(0, 0, 0);
     display: flex;
     margin-bottom: 5px;
     padding-bottom: 5px;
     padding-top: 5px;
     cursor: pointer;
     font-size: 15px;
-    border: 2px solid #000000;
 }
 .HistoryNavigate {
+    padding-top: 2%;
     width: 150px;
     padding-left: 2%;
     padding-right: 2%;
     background-color: #ffffff00;
 }
 .HistoryNavigate h2{
-    text-align: left;
     display: flex;
+    text-align: center;
     background-color: #00000036;
 }
 @media screen and (max-width: 768px) {
-    body{
-        padding-top: 15%;
-    }
+
     .nav{
         border: 2px solid rgb(0, 0, 0);
         background-size:auto;
@@ -126,11 +155,8 @@ button:hover{
         height: 150px;
         padding-bottom: 0px;
     }
-    h1{
-        font-size: 1.2rem;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
+    .nav:hover img{
+        display: flex;
     }
     .boton {
         display: flex;
@@ -162,8 +188,8 @@ button:hover{
     }
     .nav:hover {
         height: 150px;
-      }
-      .nav:hover .contenido{
+    }
+    .nav:hover .contenido{
         display:flex;
         align-items:center;
         padding-left: 0px;
@@ -171,16 +197,4 @@ button:hover{
         padding-top: 5%;
         justify-content: space-between;
     }
-    .nav:hover h1{
-        display: flex;
-    }
-    .botonnav {
-        display: block;
-        color: rgb(0, 0, 0);
-        width: 50%;
-        height: 30%;
-        margin-top: 3px;
-        background-color: rgb(216, 216, 216);
-        box-shadow: 6px 6px 2px rgba(0, 0, 0, 0.534);
-        }
- }
+}
