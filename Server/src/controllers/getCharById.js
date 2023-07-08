@@ -1,6 +1,6 @@
 const axios = require("axios");
-const process = require("dotenv").config();
-const URL = process.parsed.API_URL;
+require("dotenv").config();
+const URL = process.env.API_URL;
 
 async function getCharById(req, res) {
     try {

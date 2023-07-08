@@ -1,6 +1,6 @@
 const axios = require("axios");
-const process = require("dotenv").config();
-const URL = process.parsed.API_EPISODE_URL;
+require("dotenv").config();
+const URL = process.env.API_EPISODE_URL;
 
 async function getEpisodeById(req, res) {
     try {

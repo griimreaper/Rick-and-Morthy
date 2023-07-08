@@ -1,8 +1,8 @@
 const axios = require("axios")
 
-const process = require("dotenv").config();
+require("dotenv").config();
 
-const URL = process.parsed.API_URL
+const URL = process.env.API_URL
 
 async function getChars(req, res) {
     const promises = [];

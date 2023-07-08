@@ -1,7 +1,7 @@
 
 const { Sequelize } = require('sequelize');
-const process = require("dotenv").config();
-const { DB_USER, DB_PASSWORD, DB_HOST, DP_URL, DP_PORT } = process.parsed;
+require("dotenv").config();
+const { DB_USER, DB_PASSWORD, DB_HOST, DP_URL, DP_PORT } = process.env;
 const FavoriteModel = require("./models/Favorite")
 const UserModel = require("./models/User")
 
