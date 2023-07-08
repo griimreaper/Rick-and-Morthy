@@ -10,7 +10,7 @@ export default function DetailEpisode() {
     const { id } = useParams()
 
     useEffect(() => {
-        axios(`http://localhost:3001/rickandmorty/episode/${id}`)
+        axios(`https://rick-and-morthy-gr.vercel.app/episode/${id}`)
             .then(({ data }) => {
                 if (data.id) {
                     setEpisode(data);
