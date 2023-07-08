@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "start": "node ./src/index.js",
-    "start:dev": "nodemon ./src/index.js"
+    "start": "node ./index.js",
+    "start:dev": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",

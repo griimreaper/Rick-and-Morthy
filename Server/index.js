@@ -1,5 +1,5 @@
-const server = require("./app")
-const { conn, DP_PORT } = require("./DB_connection")
+const server = require("./src/app")
+const { conn, DP_PORT } = require("./src/DB_connection")
 const PORT = DP_PORT ?? 3001;
 
 conn.sync({ force: false }).then(() => {
