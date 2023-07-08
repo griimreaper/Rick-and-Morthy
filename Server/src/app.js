@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const router = require("./routes/index")
-const logger = require("morgan")
+// const logger = require("morgan")
 
 const urlencoded = express.urlencoded({extended:false})
 
@@ -19,7 +19,7 @@ server.use((req, res, next) => {
     next();
 });
 
-server.use(logger("dev"))
+// server.use(logger("dev"))
 server.use(express.json());
 server.use("/rickandmorty", router)
 
