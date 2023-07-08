@@ -12,7 +12,7 @@ export default function Register() {
     const [errors, setErrors] = useState({})
 
     const handleSubmit = async (e) => {
-        const endpoint = 'http://localhost:3001/rickandmorty/login'
+        const endpoint = 'https://rick-and-morthy-server-griimreaper.vercel.app/login'
         try {
             await axios.post(endpoint, userData)
         } catch (error) {

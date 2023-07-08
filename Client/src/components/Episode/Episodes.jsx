@@ -8,7 +8,7 @@ export default function Episodes() {
     const [episodes, setEpisodes] = useState()
 
     useEffect(() => {
-        axios(`http://localhost:3001/rickandmorty/character/1`).then(({ data }) => {
+        axios(`https://rick-and-morthy-server-griimreaper.vercel.app/character/1`).then(({ data }) => {
             if (data.episode) {
                 setEpisodes(data.episode);
             } else {

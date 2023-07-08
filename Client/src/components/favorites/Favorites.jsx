@@ -9,7 +9,7 @@ export default function Favorites({ userId }) {
     const [myFavoritesOrigin, setMyFavoritesOrigin] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/rickandmorty/fav/${userId}`)
+        axios.get(`https://rick-and-morthy-server-griimreaper.vercel.app/fav/${userId}`)
             .then((response) => {
                 setMyFavorites(response.data);
                 setMyFavoritesOrigin(response.data)

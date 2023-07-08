@@ -12,7 +12,7 @@ export default function Detail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+        const response = await axios(`https://rick-and-morthy-server-griimreaper.vercel.app/character/${id}`);
         const { data } = response;
         if (data.name) {
           setCharacter(data);

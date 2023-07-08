@@ -27,7 +27,7 @@ function App() {
    async function login(userData) {
       try {
          const { email, password } = userData;
-         const URL = 'http://localhost:3001/rickandmorty/login/';
+         const URL = 'https://rick-and-morthy-server-griimreaper.vercel.app/login/';
          const { data } = await axios.get(URL + `?email=${email}&password=${password}`);
          const { access, id } = data;
          setAccess(access);
@@ -48,7 +48,7 @@ function App() {
    // }, [access]);
 
    useEffect(() => {
-      axios.get(`http://localhost:3001/rickandmorty/character`)
+      axios.get(`https://rick-and-morthy-server-griimreaper.vercel.app/character`)
          .then((results) => {
             setCharacters([...results.data])
             dispatch(addCharacter(results.data))
@@ -60,7 +60,7 @@ function App() {
 
    async function onSearch(id) {
       try {
-         const { data } = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
+         const { data } = await axios.get(`https://rick-and-morthy-server-griimreaper.vercel.app/character/${id}`);
          setCharacters([data]);
       } catch (error) {
          console.log(error.message)
