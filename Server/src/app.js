@@ -21,6 +21,6 @@ server.use((req, res, next) => {
 
 // server.use(logger("dev"))
 server.use(express.json());
-server.use("/rickandmorty", router)
+server.use("/", router)
 
 module.exports = server
