@@ -15,21 +15,23 @@ import { addCharacter, addLocation, removeFav, searchCharacters } from './redux/
 import HistoryNavigate from './components/HistoryNavigate';
 import DetailEpisode from './components/Episode/DetailEpisode';
 import Episodes from './components/Episode/Episodes';
+import Register from "./components/Register/Register"
 
 function App() {
    const [characters, setCharacters] = useState([])
    const [access, setAccess] = useState(false)
+   const [userId, setUserId] = useState("")
    const navigate = useNavigate();
    const location = useLocation();
    const dispatch = useDispatch();
-
    async function login(userData) {
       try {
          const { email, password } = userData;
          const URL = 'http://localhost:3001/rickandmorty/login/';
          const { data } = await axios.get(URL + `?email=${email}&password=${password}`);
-         const { access } = data;
-         setAccess(data);
+         const { access, id } = data;
+         setAccess(access);
+         setUserId(id)
          access && navigate('/home');
       } catch (error) {
          console.log(error);
@@ -76,24 +78,25 @@ function App() {
    })
    return (
       <div className='App'>
-      {location.pathname !== "/" && <Nav logout={logout} onSearch={onSearch}></Nav>}
-      {location.pathname !== "/" &&
-      <Link to="/favorites">
-      <button title="Tus Favoritos" className='favorites'></button>
-      </Link>
-   }
-   <Routes>
-   <Route path="/" element={<Form login={login} />} />
-   <Route path="/home" element={<Cards onClose={onClose} className="cards" characters={characters} />} />
-   <Route path="/about" element={<About />} />
-   <Route path="/detail/:id" element={<Detail />} />
-   <Route path="/episode/:id" element={<DetailEpisode />} />
-   <Route path="/episodes" element={<Episodes />} />
-   <Route path="/:cualquier" element={<Error></Error>} />
-   <Route path="/favorites" element={<Favorites></Favorites>} />
-   <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />
-   </Routes>
-   <div class="ovni"></div>
+         {location.pathname !== "/" && location.pathname !== "/register" && <Nav logout={logout} onSearch={onSearch}></Nav>}
+         {location.pathname !== "/" && location.pathname !== "/register" &&
+            <Link to="/favorites">
+               <button title="Tus Favoritos" className='favorites'></button>
+            </Link>
+         }
+         <Routes>
+            <Route path="/" element={<Form login={login} />} />
+            <Route path="/register" element={<Register></Register>} />
+            <Route path="/home" element={<Cards onClose={onClose} userId={userId} className="cards" characters={characters} />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/detail/:id" element={<Detail />} />
+            <Route path="/episode/:id" element={<DetailEpisode />} />
+            <Route path="/episodes" element={<Episodes />} />
+            <Route path="/:cualquier" element={<Error></Error>} />
+            <Route path="/favorites" element={<Favorites userId={userId}></Favorites>} />
+            <Route path="/history" element={<HistoryNavigate></HistoryNavigate>} />
+         </Routes>
+         <div class="ovni"></div>
       </div>
    );
 }
