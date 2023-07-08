@@ -17,13 +17,19 @@ module.exports = (sequelize) => {
          type:DataTypes.STRING
       },
       gender:{
-         type:DataTypes.STRING
+         type:DataTypes.STRING,
+         validate:{
+            isIn:[["Male", "Female", "unknown", "Genderless"]]
+         }
       },
       origin:{
          type:DataTypes.STRING
       },
       image:{
-         type:DataTypes.STRING
+         type:DataTypes.STRING,
+         validate:{
+            isUrl: true
+         }
       }
    }, { timestamps: false });
 };

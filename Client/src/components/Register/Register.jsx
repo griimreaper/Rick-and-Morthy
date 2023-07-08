@@ -1,19 +1,23 @@
-import React from "react"
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import "./Form.css"
-import { validate } from "./Validation"
+import React from 'react'
+import { useState } from 'react'
+import { validate } from "../form/Validation"
+import { Link } from 'react-router-dom'
+import axios from "axios"
 
-export default function Login({ login }) {
+export default function Register() {
     const [userData, setUserData] = useState({
         email: "",
         password: "",
     })
     const [errors, setErrors] = useState({})
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        login(userData)
+    const handleSubmit = async (e) => {
+        const endpoint = 'http://localhost:3001/rickandmorty/login'
+        try {
+            await axios.post(endpoint, userData)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleChange = (evento) => {
@@ -29,29 +33,20 @@ export default function Login({ login }) {
         )
     }
 
-    const printE = (error) => {
-        setTimeout(() => {
-            return error
-        }, 2000);
-    }
-
     return (
         <div className="contenidoL">
-            <h2>Welcome dude, Buuurrrrp!.</h2>
-            <img src="https://www.pngall.com/wp-content/uploads/4/Rick-And-Morty-PNG-Image.png" alt="rami" />
+            <h2>Register.</h2>
             <label>Email: </label>
             <input value={userData.email} name="email" onChange={handleChange}></input>
             <p>{errors.email}</p>
             <label>Password: </label>
             <input value={userData.password} name="password" onChange={handleChange}></input>
             <p>{errors.password}</p>
-            {Object.keys(errors).length === 0 && userData.email !== "" &&
-                <Link to="/home">
-                    <button className="botonF" onClick={handleSubmit}>Ingresar</button>
-                </Link>}
-            <Link to="/register">
-                <button className="botonF">Register</button>
+            <Link to="/">
+                <button className="botonF" onClick={handleSubmit}>Register</button>
             </Link>
         </div>
     )
 }
+
+

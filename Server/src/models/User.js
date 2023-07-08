@@ -10,15 +10,11 @@ module.exports = (sequelize) => {
       email: {
          type: DataTypes.STRING,
          isEmail: true,
-         allowNull: true
+         allowNull: false
       },
       password: {
          type: DataTypes.STRING,
-         allowNull: true,
-         validate: {
-            is: /^[a-z]+$/i,
-            len: [6,10]
-         }
+         allowNull: false,
       },
    }, { timestamps: false });
 };

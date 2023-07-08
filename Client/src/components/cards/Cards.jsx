@@ -4,7 +4,7 @@ import "./Cards.css"
 import Paginate from './Paginate';
 
 
-export default function Cards({ onClose, characters }) {
+export default function Cards({ onClose, characters, userId}) {
 
    const { numPage } = useSelector((state) => state)
 
@@ -27,6 +27,7 @@ export default function Cards({ onClose, characters }) {
             origin={origin.name}
             image={image}
             onClose={onClose}
+            userId={userId}
          >
          </Card>);
       })}

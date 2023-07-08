@@ -11,7 +11,7 @@ export default function Card(props) {
    const dispatch = useDispatch()
 
    useEffect(() => {
-      axios.get('http://localhost:3001/rickandmorty/fav')
+      axios.get(`http://localhost:3001/rickandmorty/fav/${userId}`)
          .then(response => setMyFavorites(response.data))
          .catch(error => console.error(error));
    }, []);
@@ -25,8 +25,7 @@ export default function Card(props) {
    }, [myFavorites]);
 
 
-   const { name, status, species, id, gender, origin, image, onClose } = props
-
+   const { name, status, species, id, gender, origin, image, onClose, userId } = props
    const handleFavorite = () => {
       if (isFav) {
          setIsFav(false);
@@ -41,6 +40,7 @@ export default function Card(props) {
                origin,
                id,
                image,
+               userId
             })
          );
          setIsFav(true);

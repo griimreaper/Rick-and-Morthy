@@ -1,20 +1,19 @@
-import { useDispatch, useSelector } from "react-redux"
 import CardFavorite from "./CardFavorite"
 import "./Favorites.css"
 import React from 'react'
-import { filtrarNombre, orderCards, filterCards, reset, orderStatus } from "../../redux/actions"
 import axios from "axios";
 import { useState, useEffect } from "react"
-export default function Favorites() {
+export default function Favorites({ userId }) {
 
     const [myFavorites, setMyFavorites] = useState([]);
     const [myFavoritesOrigin, setMyFavoritesOrigin] = useState([])
-    const dispatch = useDispatch()
 
     useEffect(() => {
-        axios.get('http://localhost:3001/rickandmorty/fav')
-            .then((response) => {setMyFavorites(response.data);
-                setMyFavoritesOrigin(response.data)})
+        axios.get(`http://localhost:3001/rickandmorty/fav/${userId}`)
+            .then((response) => {
+                setMyFavorites(response.data);
+                setMyFavoritesOrigin(response.data)
+            })
             .catch(error => console.error(error));
     }, []);
 
@@ -41,7 +40,6 @@ export default function Favorites() {
             const sortedFavorites = myFavorites.slice().sort(sortAlphabetically).reverse()
             setMyFavorites(sortedFavorites)
         }
-        dispatch(filtrarNombre(value))
     }
 
     const handleOrder = (e) => {
@@ -54,7 +52,6 @@ export default function Favorites() {
             const sortedFavorites = myFavorites.slice().sort((a, b) => b.id - a.id)
             setMyFavorites(sortedFavorites)
         }
-        dispatch(orderCards(value))
     }
 
     const handleFilter = (e) => {
@@ -62,7 +59,6 @@ export default function Favorites() {
         const { value } = e.target;
         const filteredFavorites = myFavoritesOrigin.filter((pj) => pj.gender === value);
         setMyFavorites(filteredFavorites);
-        dispatch(filterCards(value));
     };
 
     const handleStatus = (e) => {
@@ -70,12 +66,10 @@ export default function Favorites() {
         const { value } = e.target
         const filteredFavorites = myFavoritesOrigin.filter((pj) => pj.status === value);
         setMyFavorites(filteredFavorites);
-        dispatch(orderStatus(value))
     }
 
     const handleReset = () => {
         setMyFavorites(myFavoritesOrigin)
-        return dispatch(reset())
     }
 
     return (
